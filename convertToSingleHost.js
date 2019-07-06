@@ -62,6 +62,9 @@ async function convertProjectToSingleHost(host) {
     await unlinkFileAsync(`./src/taskpane/${host}.ts`);
   });
 
+  // delete the .azure-devops folder
+  deleteFolder(path.resolve(`./.azure-devops`));
+  
   // delete the .github folder
   deleteFolder(path.resolve(`./.github`));
 
