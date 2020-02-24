@@ -60,7 +60,7 @@ module.exports = async (env, options) => {
               return content;
             } else {
               const urlDev = "https://localhost:3000/";
-              const urlProd = "https://akrantz.github.io/office-addins/content/";
+              const urlProd = "https://akrantz.github.io/office-addins/content-word/";
               return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             }
           }          
