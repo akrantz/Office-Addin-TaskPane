@@ -4,20 +4,58 @@ import { BrowserInfo } from "./browserInfo";
 
 Office.onReady(info => {
   const browserInfo = new BrowserInfo();
+  const elementAppBody = document.getElementById("app-body");
+  const elementBrowserName = document.getElementById("browserName");
+  const elementBrowserVersion = document.getElementById("browserVersion");
+  const elementHostAppName = document.getElementById("hostAppName");
+  const elementHostAppType = document.getElementById("hostAppType");
+  const elementSideloadMessage = document.getElementById("sideload-msg");
 
   if (browserInfo) {
-    document.getElementById("browserName").innerText = browserInfo.Name;
-    document.getElementById("browserVersion").innerText = browserInfo.Version;
+    elementBrowserName.innerText = browserInfo.Name;
+    elementBrowserVersion.innerText = browserInfo.Version;
+
+    const elementBrowserLogo = getBrowserLogoElement(browserInfo);
+
+    if (elementBrowserLogo) {
+      elementBrowserLogo.style.display = "block";
+    }
   }
 
   if (info.host) {
-    document.getElementById("hostAppName").innerText = getHostAppName(info.host);
-    document.getElementById("hostAppType").innerText = getHostAppType(info.platform);
+    elementHostAppName.innerText = getHostAppName(info.host);
+    elementHostAppType.innerText = getHostAppType(info.platform);
 
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";
+    elementSideloadMessage.style.display = "none";
+    elementAppBody.style.display = "flex";
   }
 });
+
+function getBrowserLogoElement(browserInfo: BrowserInfo): HTMLElement | undefined {
+  const elementName = getBrowserLogoElementName(browserInfo);
+
+  if (elementName) {
+    return document.getElementById(elementName);
+  }
+
+  return undefined;
+}
+
+function getBrowserLogoElementName(browserInfo: BrowserInfo): string | undefined {
+  switch (browserInfo.Name) {
+    case "Chrome": 
+    case "Electron":
+    case "Firefox":
+    case "Safari":
+        return `${browserInfo.Name.toLowerCase()}Logo`;
+    case "Microsoft Edge":
+      return isOldEdge(browserInfo.Version) ? "edgeOldLogo" : "edgeLogo";
+    case "Internet Explorer":
+      return "ieLogo";
+    default:
+      return undefined;
+  }
+}
 
 function getHostAppName(host: Office.HostType) {
   switch (host) {
@@ -55,4 +93,14 @@ function getHostAppType(platformType: Office.PlatformType) {
     case Office.PlatformType.iOS:
       return "iOS";
   }
+}
+
+function isOldEdge(version: string) {
+  if (version) {
+    const majorVersion: number = parseInt(version.split(".")[0], 10);
+
+    return majorVersion < 50;
+  }
+
+  return false;
 }
