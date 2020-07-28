@@ -11,9 +11,9 @@ Office.onReady(info => {
   const elementHostAppType = document.getElementById("hostAppType");
   const elementSideloadMessage = document.getElementById("sideload-msg");
 
-  if (browserInfo) {
-    elementBrowserName.innerText = browserInfo.Name;
-    elementBrowserVersion.innerText = browserInfo.Version;
+  if (browserInfo) {    
+    elementBrowserName.innerText = browserInfo.Name ? browserInfo.Name : "Unknown";
+    elementBrowserVersion.innerText = browserInfo.Version ? browserInfo.Version : "";
 
     const elementBrowserLogo = getBrowserLogoElement(browserInfo);
 
@@ -57,7 +57,7 @@ function getBrowserLogoElementName(browserInfo: BrowserInfo): string | undefined
   }
 }
 
-function getHostAppName(host: Office.HostType) {
+function getHostAppName(host: Office.HostType): string {
   switch (host) {
     case Office.HostType.Access:
       return "Access";
@@ -78,7 +78,7 @@ function getHostAppName(host: Office.HostType) {
   }
 }
 
-function getHostAppType(platformType: Office.PlatformType) {
+function getHostAppType(platformType: Office.PlatformType): string {
   switch (platformType) {
     case Office.PlatformType.Android:
       return "Android";
@@ -92,6 +92,8 @@ function getHostAppType(platformType: Office.PlatformType) {
       return "Windows (Universal)";
     case Office.PlatformType.iOS:
       return "iOS";
+    default:
+      return "";
   }
 }
 
