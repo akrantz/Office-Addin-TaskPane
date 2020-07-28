@@ -43,11 +43,11 @@ function getBrowserLogoElement(browserInfo: BrowserInfo): HTMLElement | undefine
 
 function getBrowserLogoElementName(browserInfo: BrowserInfo): string | undefined {
   switch (browserInfo.Name) {
-    case "Chrome": 
+    case "Chrome":
     case "Electron":
     case "Firefox":
     case "Safari":
-        return `${browserInfo.Name.toLowerCase()}Logo`;
+      return `${browserInfo.Name.toLowerCase()}Logo`;
     case "Microsoft Edge":
       return isOldEdge(browserInfo.Version) ? "edgeOldLogo" : "edgeLogo";
     case "Internet Explorer":

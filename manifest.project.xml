@@ -2,15 +2,15 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>4030df8f-fd02-4c33-a40f-a52982acec1e</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Adam Krantz</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Browser Info"/>
   <Description DefaultValue="Show info about the browser being used."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/browser-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/browser-80.png"/>
+  <SupportUrl DefaultValue="https://akrantz.github.io/office-addins/support"/>
   <AppDomains>
-    <AppDomain>contoso.com</AppDomain>
+    <AppDomain>akrantz.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Project"/>
