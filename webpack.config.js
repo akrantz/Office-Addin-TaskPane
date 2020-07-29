@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const fs = require("fs");
 const webpack = require("webpack");
 
+const urlDev = "https://localhost:3000/";
+const urlProd = "https://akrantz.github.io/office-addins/browser-info/";
+
 module.exports = async (env, options) => {
   const dev = options.mode === "development";
   const buildType = dev ? "dev" : "prod";  
@@ -54,14 +57,12 @@ module.exports = async (env, options) => {
           from: "./src/taskpane/taskpane.css"
         },
         {
-          to: "manifest." + buildType + ".xml",
-          from: "manifest.xml",
+          to: "[name]." + buildType + ".[ext]",
+          from: "manifest*.xml",
           transform(content) {
             if (dev) {
               return content;
             } else {
-              const urlDev = "https://localhost:3000/";
-              const urlProd = "https://akrantz.github.io/office-addins/browser-info/";
               return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             }
           }           
