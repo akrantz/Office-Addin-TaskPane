@@ -12,7 +12,7 @@
   <Description DefaultValue="Show info about the browser being used."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/browser-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/browser-80.png"/>
-  <SupportUrl DefaultValue="https://akrantz.github.io/office-addins/support"/>
+  <SupportUrl DefaultValue="https://github.com/akrantz/Office-Addin-TaskPane/issues"/>
   <AppDomains>
     <AppDomain>akrantz.github.io</AppDomain>
   </AppDomains>
