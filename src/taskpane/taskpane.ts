@@ -1,5 +1,11 @@
 import { BrowserInfo } from "./browserInfo";
 
+// images referenced in the manifest
+import "../../assets/browser.png";
+import "../../assets/browser-16.png";
+import "../../assets/browser-32.png";
+import "../../assets/browser-80.png";
+
 /* global document, Office */
 
 Office.onReady(info => {
